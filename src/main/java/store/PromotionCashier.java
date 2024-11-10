@@ -18,7 +18,7 @@ public class PromotionCashier {
         this.endTime = endTime;
     }
 
-    public Message checkBuy(int count, LocalDateTime now) {
+    public Message checkBuy(LocalDateTime now) {
         if (now.isAfter(startTime) && now.isBefore(endTime)) {
             return Message.SUCCESS;
         }
