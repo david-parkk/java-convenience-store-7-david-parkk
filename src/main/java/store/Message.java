@@ -3,6 +3,7 @@ package store;
 public enum Message {
 
     NO_QUANTITY(true, "수량이 모자랍니다"),
+    EXPIRED_PROMOTION(true, "만료된 프로모션 입니다."),
     SUCCESS(false, "정상 응답");
 
     private boolean isException;
