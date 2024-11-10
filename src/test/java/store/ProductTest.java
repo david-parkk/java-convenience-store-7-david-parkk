@@ -9,7 +9,7 @@ public class ProductTest {
     @Test
     void 물건을_구매_할_수_있다() {
         //given
-        Product product = new Product("제품", 1000, 2);
+        Product product = new Product("제품", 1000);
 
         //when
         int price = product.buy(2);
