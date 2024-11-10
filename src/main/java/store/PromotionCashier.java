@@ -5,29 +5,41 @@ import java.time.LocalDateTime;
 public class PromotionCashier {
 
     private Product product;
-    public int quantity;
+    private int quantity;
     private int promotionCondition;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public PromotionCashier(Product product, int promotionCondition, LocalDateTime startTime,
-                            LocalDateTime endTime) {
+    public PromotionCashier(Product product, int quantity, int promotionCondition,
+                            LocalDateTime startTime, LocalDateTime endTime) {
         this.product = product;
+        this.quantity = quantity;
         this.promotionCondition = promotionCondition;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public Message checkBuy(LocalDateTime now) {
+    public boolean checkBuy(LocalDateTime now) {
         if (now.isAfter(startTime) && now.isBefore(endTime)) {
-            return Message.SUCCESS;
+            return true;
         }
-        return Message.EXPIRED_PROMOTION;
+        return false;
     }
 
-    public int buy(int count, LocalDateTime now) {
-        int buyCount = count - (count % promotionCondition);
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public ProductReceipt buy(int count, LocalDateTime now) {
+        if (!checkBuy(now)) {
+            throw new IllegalArgumentException("프로모션을 적용할 수 없는 시간입니다");
+        }
+        int freebie = calculateFreebie(count);
         quantity -= count;
-        return product.buy(buyCount);
+        return new ProductReceipt(product, count - freebie, product.buy(count - freebie), freebie);
+    }
+
+    private int calculateFreebie(int count) {
+        return count / (promotionCondition + 1);
     }
 }

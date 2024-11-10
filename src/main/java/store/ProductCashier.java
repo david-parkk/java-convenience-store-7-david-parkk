@@ -3,22 +3,26 @@ package store;
 public class ProductCashier {
 
     private Product product;
-    public int quantity;
+    private int quantity;
 
     public ProductCashier(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
     }
 
-    public Message checkBuy(int count) {
+    public boolean checkBuy(int count) {
         if (count > quantity) {
-            return Message.NO_QUANTITY;
+            return false;
         }
-        return Message.SUCCESS;
+        return true;
     }
 
-    public int buy(int count) {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public ProductReceipt buy(int count) {
         quantity -= count;
-        return product.buy(count);
+        return new ProductReceipt(product, count, product.buy(count));
     }
 }

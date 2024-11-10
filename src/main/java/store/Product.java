@@ -13,4 +13,8 @@ public class Product {
     public int buy(int count) {
         return price * count;
     }
+
+    public String getName() {
+        return name;
+    }
 }
