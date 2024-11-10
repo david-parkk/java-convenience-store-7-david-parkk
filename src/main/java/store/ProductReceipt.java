@@ -6,6 +6,7 @@ public class ProductReceipt {
     private int count;
     private int price;
     private int freebie;
+    private int freebiePrice;
 
     public ProductReceipt() {
         this.name = "임시영수증";
@@ -21,11 +22,12 @@ public class ProductReceipt {
         this.freebie = 0;
     }
 
-    public ProductReceipt(Product product, int count, int totalPrice, int freebie) {
+    public ProductReceipt(Product product, int count, int totalPrice, int freebie, int freebiePrice) {
         this.name = product.getName();
         this.count = count;
         this.price = totalPrice;
         this.freebie = freebie;
+        this.freebiePrice = freebiePrice;
     }
 
     public int getCount() {
@@ -34,6 +36,10 @@ public class ProductReceipt {
 
     public int getFreebie() {
         return freebie;
+    }
+
+    public int getFreebiePrice() {
+        return freebiePrice;
     }
 
     public void modify(ProductReceipt productReceipt) {

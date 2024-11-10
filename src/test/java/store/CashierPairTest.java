@@ -44,5 +44,6 @@ public class CashierPairTest {
         //then
         Assertions.assertThat(productReceipt.getCount()).isEqualTo(7);
         Assertions.assertThat(productReceipt.getFreebie()).isEqualTo(1);
+        Assertions.assertThat(productReceipt.getFreebiePrice()).isEqualTo(2000);
     }
 }

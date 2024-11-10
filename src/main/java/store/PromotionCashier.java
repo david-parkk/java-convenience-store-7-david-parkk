@@ -36,7 +36,8 @@ public class PromotionCashier {
         }
         int freebie = calculateFreebie(count);
         quantity -= count;
-        return new ProductReceipt(product, count - freebie, product.buy(count - freebie), freebie);
+        return new ProductReceipt(product, count - freebie, product.buy(count - freebie),
+                freebie, product.buy(freebie));
     }
 
     private int calculateFreebie(int count) {
