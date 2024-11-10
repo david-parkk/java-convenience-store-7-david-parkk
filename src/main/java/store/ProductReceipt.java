@@ -30,8 +30,16 @@ public class ProductReceipt {
         this.freebiePrice = freebiePrice;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getCount() {
         return count;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     public int getFreebie() {
