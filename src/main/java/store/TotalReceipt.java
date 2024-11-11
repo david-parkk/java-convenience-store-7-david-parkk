@@ -31,7 +31,7 @@ public class TotalReceipt {
             }
         });
         membershipDiscountPrice = Math.min(8000, membershipDiscountPrice);
-        finalPrice = totalPrice - membershipDiscountPrice;
+        finalPrice = totalPrice - promotionDiscountPrice - membershipDiscountPrice;
     }
 
     public List<ProductReceipt> getReceipts() {
