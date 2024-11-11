@@ -2,6 +2,7 @@ package store;
 
 import java.util.List;
 import store.io.InputView;
+import store.io.OutputView;
 import store.io.ProductData;
 import store.io.ResourceReader;
 
@@ -11,6 +12,12 @@ public class Application {
         TotalCashier totalCashier = new CashierFactory().makeTotalCashier(productDatas);
 
         InputView inputView = new InputView();
-        inputView.readBuyInput(totalCashier);
+        OutputView outputView = new OutputView();
+        do {
+            TotalOrder totalOrder = inputView.readBuyInput(totalCashier);
+
+            outputView.printReceipt(totalCashier.buyProduct(totalOrder));
+
+        } while (!inputView.readFinishInput());
     }
 }

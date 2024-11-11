@@ -54,7 +54,7 @@ public class PromotionCashier {
         if (quantity == 0) {
             return "재고 없음";
         }
-        return String.valueOf(quantity);
+        return String.valueOf(quantity) + "개";
     }
 
     @Override
@@ -63,7 +63,6 @@ public class PromotionCashier {
         stringBuilder.append(product.toString());
         stringBuilder.append(" ");
         stringBuilder.append(getQuantityString());
-        stringBuilder.append("개");
         stringBuilder.append(" ");
         stringBuilder.append(promotionName);
         return stringBuilder.toString();
