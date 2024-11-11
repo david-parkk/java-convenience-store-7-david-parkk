@@ -17,16 +17,18 @@ public class TotalReceipt {
     public TotalReceipt(List<ProductReceipt> receipts) {
         this.receipts = receipts;
         receipts.forEach(productReceipt -> {
-            totalPrice += productReceipt.getPrice();
+            totalPrice += productReceipt.getPrice() + productReceipt.getFreebiePrice();
             promotionDiscountPrice += productReceipt.getFreebiePrice();
             totalCount += productReceipt.getCount() + productReceipt.getFreebie();
         });
-        this.finalPrice = totalPrice;
+        this.finalPrice = totalPrice - promotionDiscountPrice;
     }
 
     public void applyMembership() {
         receipts.forEach(productReceipt -> {
-            membershipDiscountPrice += productReceipt.getPrice() * 0.3;
+            if (productReceipt.getFreebiePrice() == 0) {
+                membershipDiscountPrice += (productReceipt.getPrice()) * 0.3;
+            }
         });
         membershipDiscountPrice = Math.min(8000, membershipDiscountPrice);
         finalPrice = totalPrice - membershipDiscountPrice;
