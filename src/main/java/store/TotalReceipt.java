@@ -72,13 +72,7 @@ public class TotalReceipt {
     }
 
     private String converyPriceString(int price, boolean isMinus) {
-        if (price == 0) {
-            return "0";
-        }
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.KOREA);
-        if (isMinus) {
-            return "-" + numberFormat.format(price);
-        }
-        return numberFormat.format(price);
+        return "-" + numberFormat.format(price);
     }
 }
