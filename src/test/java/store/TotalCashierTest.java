@@ -17,7 +17,7 @@ public class TotalCashierTest {
         LocalDateTime startTime = LocalDateTime.of(2024, 11, 10, 0, 0);
         LocalDateTime endTime = LocalDateTime.of(2024, 11, 20, 23, 59);
         PromotionCashier promotionCashier = new PromotionCashier(product,
-                3, 3, startTime, endTime);
+                3, "프로모션1", 3, startTime, endTime);
         ProductCashier productCashier = new ProductCashier(product, 12);
         CashierPair cashierPair = new CashierPair(promotionCashier, productCashier);
 
@@ -43,7 +43,7 @@ public class TotalCashierTest {
         LocalDateTime startTime = LocalDateTime.of(2024, 11, 10, 0, 0);
         LocalDateTime endTime = LocalDateTime.of(2024, 11, 20, 23, 59);
         PromotionCashier promotionCashier = new PromotionCashier(product,
-                1000, 3, startTime, endTime);
+                1000, "프로모션1", 3, startTime, endTime);
         ProductCashier productCashier = new ProductCashier(product, 12);
         CashierPair cashierPair = new CashierPair(promotionCashier, productCashier);
 

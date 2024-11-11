@@ -25,4 +25,21 @@ public class ProductCashier {
         quantity -= count;
         return new ProductReceipt(product, count, product.buy(count));
     }
+
+    private String getQuantityString() {
+        if (quantity == 0) {
+            return "재고 없음";
+        }
+        return String.valueOf(quantity);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(product.toString());
+        stringBuilder.append(" ");
+        stringBuilder.append(getQuantityString());
+        stringBuilder.append("개");
+        return stringBuilder.toString();
+    }
 }

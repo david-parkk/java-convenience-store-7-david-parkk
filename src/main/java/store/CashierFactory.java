@@ -61,7 +61,7 @@ public class CashierFactory {
 
     public PromotionCashier makePromotionCashier(ProductData productData) {
         Product product = makeProduct(productData);
-        return new PromotionCashier(product, productData.getQuantity()
+        return new PromotionCashier(product, productData.getQuantity(), productData.getPromotionData().getName()
                 , productData.getPromotionData().getBuy(), productData.getPromotionData().getStartTime(),
                 productData.getPromotionData()
                         .getEndTime());

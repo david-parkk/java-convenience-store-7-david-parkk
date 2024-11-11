@@ -13,7 +13,7 @@ public class PromotionCashierTest {
         LocalDateTime startTime = LocalDateTime.of(2024, 11, 10, 0, 0);
         LocalDateTime endTime = LocalDateTime.of(2024, 11, 20, 23, 59);
         PromotionCashier promotionCashier = new PromotionCashier(product,
-                12, 3, startTime, endTime);
+                12, "프로모션1", 3, startTime, endTime);
 
         //when
         LocalDateTime currentTime = LocalDateTime.of(2024, 11, 15, 0, 0);
@@ -30,7 +30,7 @@ public class PromotionCashierTest {
         LocalDateTime startTime = LocalDateTime.of(2024, 11, 10, 0, 0);
         LocalDateTime endTime = LocalDateTime.of(2024, 11, 20, 23, 59);
         PromotionCashier promotionCashier = new PromotionCashier(product,
-                12, 3, startTime, endTime);
+                12, "프로모션1", 3, startTime, endTime);
 
         //when
         LocalDateTime currentTime = LocalDateTime.of(2024, 11, 9, 0, 0);

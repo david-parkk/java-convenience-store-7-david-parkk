@@ -6,14 +6,16 @@ public class PromotionCashier {
 
     private Product product;
     private int quantity;
+    private String promotionName;
     private int promotionCondition;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public PromotionCashier(Product product, int quantity, int promotionCondition,
+    public PromotionCashier(Product product, int quantity, String promotionName, int promotionCondition,
                             LocalDateTime startTime, LocalDateTime endTime) {
         this.product = product;
         this.quantity = quantity;
+        this.promotionName = promotionName;
         this.promotionCondition = promotionCondition;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -42,5 +44,24 @@ public class PromotionCashier {
 
     private int calculateFreebie(int count) {
         return count / (promotionCondition + 1);
+    }
+
+    private String getQuantityString() {
+        if (quantity == 0) {
+            return "재고 없음";
+        }
+        return String.valueOf(quantity);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(product.toString());
+        stringBuilder.append(" ");
+        stringBuilder.append(getQuantityString());
+        stringBuilder.append(" ");
+        stringBuilder.append(promotionName);
+        stringBuilder.append("개");
+        return stringBuilder.toString();
     }
 }

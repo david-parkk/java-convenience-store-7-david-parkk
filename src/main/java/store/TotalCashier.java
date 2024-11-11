@@ -28,4 +28,13 @@ public class TotalCashier {
         CashierPair cashierPair = cashierMap.get(order.getName());
         return cashierPair.buy(order.getCount(), LocalDateTime.now());
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        cashierMap.values().forEach(cashierPair -> {
+            stringBuilder.append(cashierPair.toString());
+        });
+        return stringBuilder.toString();
+    }
 }

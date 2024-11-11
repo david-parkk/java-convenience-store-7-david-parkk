@@ -62,4 +62,18 @@ public class CashierPair {
     public void modify(PromotionCashier promotionCashier) {
         this.promotionCashier = promotionCashier;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (promotionCashier != null) {
+            stringBuilder.append(promotionCashier.toString());
+            stringBuilder.append("\n");
+        }
+        if (productCashier != null) {
+            stringBuilder.append(productCashier.toString());
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+    }
 }
