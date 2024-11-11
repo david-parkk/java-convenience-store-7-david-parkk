@@ -12,6 +12,14 @@ public class CashierPair {
         this.productCashier = productCashier;
     }
 
+    public CashierPair(ProductCashier productCashier) {
+        this.productCashier = productCashier;
+    }
+
+    public CashierPair(PromotionCashier promotionCashier) {
+        this.promotionCashier = promotionCashier;
+    }
+
     public ProductReceipt buy(int count, LocalDateTime now) {
         if (getTotalQuantity() < count) {
             throw new IllegalArgumentException("[ERROR] 재고 수량을 초과하여 구매할 수 없습니다. 다시 입력해 주세요.");
@@ -47,4 +55,11 @@ public class CashierPair {
         return true;
     }
 
+    public void modify(ProductCashier productCashier) {
+        this.productCashier = productCashier;
+    }
+
+    public void modify(PromotionCashier promotionCashier) {
+        this.promotionCashier = promotionCashier;
+    }
 }
