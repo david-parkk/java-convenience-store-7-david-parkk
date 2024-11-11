@@ -76,4 +76,10 @@ public class CashierPair {
         }
         return stringBuilder.toString();
     }
+
+    public void fillProductCashier() {
+        if (productCashier == null) {
+            productCashier = new ProductCashier(promotionCashier);
+        }
+    }
 }

@@ -14,12 +14,18 @@ public class CashierFactory {
         return new TotalCashier(cashierPairMap);
     }
 
-    public Map<String, CashierPair> makeCashiers(List<ProductData> productDatas) {
+    private Map<String, CashierPair> makeCashiers(List<ProductData> productDatas) {
         productDatas.forEach(productData -> {
             CashierPair cashierPair = makeCashierPair(productData);
             cashierMap.put(productData.getName(), cashierPair);
         });
+        fillProductCashier();
         return cashierMap;
+    }
+
+    private void fillProductCashier() {
+        cashierMap.values().forEach(CashierPair::fillProductCashier
+        );
     }
 
     private CashierPair makeCashierPair(ProductData productData) {
@@ -29,7 +35,6 @@ public class CashierFactory {
         }
         ProductCashier promotionCashier = makeProductCashier(productData);
         return updateCashPair(productData.getName(), promotionCashier);
-
     }
 
     private CashierPair updateCashPair(String name, ProductCashier productCashier) {

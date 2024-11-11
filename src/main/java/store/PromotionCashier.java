@@ -32,6 +32,10 @@ public class PromotionCashier {
         return quantity;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
     public ProductReceipt buy(int count, LocalDateTime now) {
         if (!checkBuy(now)) {
             throw new IllegalArgumentException("프로모션을 적용할 수 없는 시간입니다");
@@ -59,9 +63,9 @@ public class PromotionCashier {
         stringBuilder.append(product.toString());
         stringBuilder.append(" ");
         stringBuilder.append(getQuantityString());
+        stringBuilder.append("개");
         stringBuilder.append(" ");
         stringBuilder.append(promotionName);
-        stringBuilder.append("개");
         return stringBuilder.toString();
     }
 }

@@ -10,6 +10,11 @@ public class ProductCashier {
         this.quantity = quantity;
     }
 
+    public ProductCashier(PromotionCashier promotionCashier) {
+        this.product = promotionCashier.getProduct();
+        this.quantity = 0;
+    }
+
     public boolean checkBuy(int count) {
         if (count > quantity) {
             return false;
