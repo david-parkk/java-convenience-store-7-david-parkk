@@ -69,10 +69,7 @@ public class TotalCashier {
     }
 
     private void checkPermitNoPromotion(CashierPair cashierPair, Order order) {
-        int discount = cashierPair.checkPermitNoPromotion(order.getCount());
-        if (discount > 0) {
-            order.disCount(discount);
-        }
+        cashierPair.checkPermitNoPromotion(order.getCount());
     }
 
 }
