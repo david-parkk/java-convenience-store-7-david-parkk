@@ -48,8 +48,6 @@ public class TotalCashier {
                     return cashierPair.checkQuantity(order.getCount());
                 })
                 .allMatch(Boolean::booleanValue);
-
-
     }
 
     public void checkPromotion(TotalOrder totalOrder) {

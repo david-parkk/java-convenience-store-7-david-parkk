@@ -18,16 +18,12 @@ public class Kiosk {
     public void start() {
         do {
             TotalOrder totalOrder = inputView.readBuyInput(totalCashier);
-
             if (checkOverOrder(totalOrder)) {
                 continue;
             }
-
             checkAdditionalPromotionDetail(totalOrder);
             boolean isMembership = inputView.readMembership();
-
             outputView.printReceipt(totalCashier.buyProduct(totalOrder, isMembership));
-
         } while (!inputView.readFinishInput());
     }
 
@@ -41,6 +37,5 @@ public class Kiosk {
 
     private void checkAdditionalPromotionDetail(TotalOrder totalOrder) {
         totalCashier.checkPromotion(totalOrder);
-
     }
 }

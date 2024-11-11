@@ -27,17 +27,19 @@ public class CashierPair {
         return true;
     }
 
-    public ProductReceipt buy(int count, LocalDateTime now) {
+    private void validate(int count) {
         if (getTotalQuantity() < count) {
             throw new IllegalArgumentException("[ERROR] 재고 수량을 초과하여 구매할 수 없습니다. 다시 입력해 주세요.");
         }
+    }
 
+    public ProductReceipt buy(int count, LocalDateTime now) {
+        validate(count);
         ProductReceipt productReceipt = new ProductReceipt();
         if (checkPromotionCashierAvailable(now)) {
             int quantity = promotionCashier.getQuantity();
             productReceipt = promotionCashier.buy(Math.min(count, quantity), now);
         }
-
         int extraCount = count - productReceipt.getCount() - productReceipt.getFreebie();
         if (extraCount > 0) {
             productReceipt.modify(productCashier.buy(extraCount));
