@@ -37,4 +37,15 @@ public class TotalCashier {
         });
         return stringBuilder.toString();
     }
+
+    public boolean checkOrder(TotalOrder totalOrder) {
+        return totalOrder.getOrders().stream()
+                .map(order -> {
+                    CashierPair cashierPair = cashierMap.get(order.getName());
+                    return cashierPair.check(order.getCount());
+                })
+                .allMatch(Boolean::booleanValue);
+
+
+    }
 }
