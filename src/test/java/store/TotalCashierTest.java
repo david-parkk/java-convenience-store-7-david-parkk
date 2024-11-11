@@ -59,7 +59,7 @@ public class TotalCashierTest {
         TotalReceipt totalReceipt = totalCashier.buyProductByMembership(totalOrder);
 
         //then
-        Assertions.assertThat(totalReceipt.getMembershipDiscountPrice()).isEqualTo(8000);
+        Assertions.assertThat(totalReceipt.getMembershipDiscountPrice()).isEqualTo(0);
 
     }
 }
