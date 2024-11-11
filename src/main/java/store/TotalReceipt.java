@@ -34,24 +34,8 @@ public class TotalReceipt {
         finalPrice = totalPrice - promotionDiscountPrice - membershipDiscountPrice;
     }
 
-    public List<ProductReceipt> getReceipts() {
-        return receipts;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public int getPromotionDiscountPrice() {
-        return promotionDiscountPrice;
-    }
-
     public int getMembershipDiscountPrice() {
         return membershipDiscountPrice;
-    }
-
-    public int getFinalPrice() {
-        return finalPrice;
     }
 
     @Override
