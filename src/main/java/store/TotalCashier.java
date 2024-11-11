@@ -38,14 +38,38 @@ public class TotalCashier {
         return stringBuilder.toString();
     }
 
-    public boolean checkOrder(TotalOrder totalOrder) {
+    public boolean checkOverOrder(TotalOrder totalOrder) {
         return totalOrder.getOrders().stream()
                 .map(order -> {
                     CashierPair cashierPair = cashierMap.get(order.getName());
-                    return cashierPair.check(order.getCount());
+                    return cashierPair.checkQuantity(order.getCount());
                 })
                 .allMatch(Boolean::booleanValue);
 
 
     }
+
+    public void checkPromotion(TotalOrder totalOrder) {
+        totalOrder.getOrders()
+                .forEach(order -> {
+                    CashierPair cashierPair = cashierMap.get(order.getName());
+
+                    checkPermitFreebie(cashierPair, order);
+                    checkPermitNoPromotion(cashierPair, order);
+                });
+    }
+
+    private void checkPermitFreebie(CashierPair cashierPair, Order order) {
+        if (cashierPair.checkPermitFreebie(order.getCount())) {
+            order.addCount();
+        }
+    }
+
+    private void checkPermitNoPromotion(CashierPair cashierPair, Order order) {
+        int discount = cashierPair.checkPermitNoPromotion(order.getCount());
+        if (discount > 0) {
+            order.disCount(discount);
+        }
+    }
+
 }

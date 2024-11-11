@@ -13,14 +13,8 @@ public class Application {
 
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
-        do {
-            TotalOrder totalOrder = inputView.readBuyInput(totalCashier);
-            if (!totalCashier.checkOrder(totalOrder)) {
-                outputView.printException();
-                continue;
-            }
-            outputView.printReceipt(totalCashier.buyProduct(totalOrder));
 
-        } while (!inputView.readFinishInput());
+        Kiosk kiosk = new Kiosk(inputView, outputView, totalCashier);
+        kiosk.start();
     }
 }

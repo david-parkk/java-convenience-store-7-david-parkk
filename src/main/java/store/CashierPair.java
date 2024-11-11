@@ -20,7 +20,7 @@ public class CashierPair {
         this.promotionCashier = promotionCashier;
     }
 
-    public boolean check(int count) {
+    public boolean checkQuantity(int count) {
         if (getTotalQuantity() < count) {
             return false;
         }
@@ -88,5 +88,19 @@ public class CashierPair {
         if (productCashier == null) {
             productCashier = new ProductCashier(promotionCashier);
         }
+    }
+
+    public boolean checkPermitFreebie(int count) {
+        if (promotionCashier != null) {
+            return promotionCashier.isPermitFreebie(count);
+        }
+        return false;
+    }
+
+    public int checkPermitNoPromotion(int count) {
+        if (promotionCashier != null) {
+            return promotionCashier.isPermitNoPromotion(count);
+        }
+        return 0;
     }
 }

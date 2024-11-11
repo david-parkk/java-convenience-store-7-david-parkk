@@ -17,4 +17,12 @@ public class Order {
     public int getCount() {
         return count;
     }
+
+    public void addCount() {
+        count++;
+    }
+
+    public void disCount(int discount) {
+        count -= discount;
+    }
 }
