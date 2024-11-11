@@ -37,4 +37,13 @@ public class InputView {
         }
         return false;
     }
+
+    public boolean readMembership() {
+        System.out.println("멤버십 할인을 받으시겠습니까? (Y/N)");
+        String input = Console.readLine();
+        if (input.equals("Y")) {
+            return true;
+        }
+        return false;
+    }
 }

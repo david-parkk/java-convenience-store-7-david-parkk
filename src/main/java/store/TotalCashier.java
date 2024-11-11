@@ -12,16 +12,19 @@ public class TotalCashier {
         this.cashierMap = cashierMap;
     }
 
-    public TotalReceipt buyProduct(TotalOrder totalOrder) {
+    public TotalReceipt buyProduct(TotalOrder totalOrder, boolean isMembership) {
         List<ProductReceipt> productReceipts = totalOrder.getOrders().stream()
                 .map(this::buy).toList();
-        return new TotalReceipt(productReceipts);
+        TotalReceipt totalReceipt = new TotalReceipt(productReceipts);
+
+        if (isMembership) {
+            totalReceipt.applyMembership();
+        }
+        return totalReceipt;
     }
 
     public TotalReceipt buyProductByMembership(TotalOrder totalOrder) {
-        TotalReceipt totalReceipt = this.buyProduct(totalOrder);
-        totalReceipt.applyMembership();
-        return totalReceipt;
+        return this.buyProduct(totalOrder, true);
     }
 
     private ProductReceipt buy(Order order) {

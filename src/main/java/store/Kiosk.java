@@ -23,9 +23,11 @@ public class Kiosk {
                 continue;
             }
 
-            checkAdditionalInput(totalOrder);
-            outputView.printReceipt(totalCashier.buyProduct(totalOrder));
-            
+            checkAdditionalPromotionDetail(totalOrder);
+            boolean isMembership = inputView.readMembership();
+
+            outputView.printReceipt(totalCashier.buyProduct(totalOrder, isMembership));
+
         } while (!inputView.readFinishInput());
     }
 
@@ -37,10 +39,8 @@ public class Kiosk {
         return false;
     }
 
-    private boolean checkAdditionalInput(TotalOrder totalOrder) {
-        //TODO
+    private void checkAdditionalPromotionDetail(TotalOrder totalOrder) {
         totalCashier.checkPromotion(totalOrder);
 
-        return false;
     }
 }
