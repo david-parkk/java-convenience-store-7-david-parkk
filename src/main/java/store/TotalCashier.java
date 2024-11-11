@@ -1,6 +1,6 @@
 package store;
 
-import java.time.LocalDateTime;
+import camp.nextstep.edu.missionutils.DateTimes;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +26,7 @@ public class TotalCashier {
 
     private ProductReceipt buy(Order order) {
         CashierPair cashierPair = cashierMap.get(order.getName());
-        return cashierPair.buy(order.getCount(), LocalDateTime.now());
+        return cashierPair.buy(order.getCount(), DateTimes.now());
     }
 
     @Override
